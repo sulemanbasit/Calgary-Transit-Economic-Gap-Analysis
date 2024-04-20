@@ -11,6 +11,9 @@ echo "Community Name,Population in private households,0 to 14 years,65 to 84 yea
 # pdftotext -layout "falconridge.pdf" ~/Desktop/community_txt.txt
 
 for file in *; do
+	if [ "$file" = "pine-creek.pdf" ]; then
+        	continue  # Skip this iteration
+	fi
 	pdftotext -layout "$file" ~/Desktop/community_txt.txt
 	# echo -n "$file," >> ~/Desktop/demand.csv
 	head -n 3 ~/Desktop/community_txt.txt | tail -n 1 | awk -F '[ ]{2,}' '{print $2}' | awk '{printf "%s,", $0}' >> ~/Desktop/demand.csv
