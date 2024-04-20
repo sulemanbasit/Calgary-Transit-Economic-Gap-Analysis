@@ -12,7 +12,8 @@ echo "Community Name,Population in private households,0 to 14 years,65 to 84 yea
 
 for file in *; do
 	pdftotext -layout "$file" ~/Desktop/community_txt.txt
-	echo -n "$file," >> ~/Desktop/demand.csv
+	# echo -n "$file," >> ~/Desktop/demand.csv
+	head -n 3 ~/Desktop/community_txt.txt | tail -n 1 | awk -F '[ ]{2,}' '{print $2}' | awk '{printf "%s,", $0}' >> ~/Desktop/demand.csv
 	head -n $(cat -n ~/Desktop/community_txt.txt| grep '0 to 14' | awk -F '[ ]{1,}' 'NR==1 {print $2}') ~/Desktop/community_txt.txt | tail | awk -F '[ ]{2,}' 'NR==8 {print $2}' | sed 's/,//g' | awk '{printf "%s,", $0}' >> ~/Desktop/demand.csv
 	cat -n ~/Desktop/community_txt.txt| grep '0 to 14 years' | awk -F '[ ]{2,}' '{print $3}' | sed 's/,//g' | awk '{printf "%s,", $0}' >> ~/Desktop/demand.csv
 	cat -n ~/Desktop/community_txt.txt| grep '65 to 84 years' | awk -F '[ ]{2,}' '{print $3}' | sed 's/,//g' | awk '{printf "%s,", $0}' >> ~/Desktop/demand.csv
