@@ -1,0 +1,6 @@
+Instructions to run the program:
+
+1: Make sure the streamlit package is installed on your PC
+    - To install: pip install streamlit
+2: Make sure your terminal is in the same directory as the program
+3: Run the following code: streamlit run *program_to_run*
