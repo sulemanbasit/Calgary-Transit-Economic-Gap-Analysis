@@ -7,7 +7,9 @@ This project will assess the planned investments in the Primary Transit Network 
 
 Process:
 
-For the project, we assessed through the typical economic method: Demand of the Calgarians and the current and future Supply of Calgary's Primary Transit Network (consisting of Max buses and transit line). Based on the literature we found on the topic, the demand index was calculated based on 4 factors/groups:
+For the project, we assessed through the typical economic method: Demand of the Calgarians and the current and future Supply of Calgary's Primary Transit Network (consisting of Max buses and transit line).
+
+Based on the literature we found on the topic, the demand index was calculated based on 4 factors/groups:
 Seniors: The demographic of people that are from 65 years old and over.
 Low Income: The demographic of people or household that make <= $26,503.
 Household Income on Rent: The demographic of people who spend more than 30% of their income on rent.
@@ -18,7 +20,7 @@ Service Coverage: It measures how well the transit stops are serving the communi
 Service Frequency: It measures how frequently the transit moves in a given day.
 Service Capacity: It measures the total number of people a transit can fit per trip.
 
-Once we have both sides, transit gap will be assessed by the difference of Demand and Supply. The results for all will be visualized using ArcGIS and Python library 'Streamlit'.
+Once we have both sides, transit gap will be assessed by the difference of Demand and Supply. The results for all will be visualized using ArcGIS and displayed in Python library 'Streamlit'.
 
 Procedure:
 
