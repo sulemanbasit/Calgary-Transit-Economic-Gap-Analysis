@@ -1,3 +1,5 @@
+# Intro:
+
 The project is inspired by "UrbanAlliance - ECON Capstone Idea - PTN Gap Analysis" pdf.
 
 "
@@ -5,7 +7,7 @@ Problem Statement:
 This project will assess the planned investments in the Primary Transit Network against socio-economic variables to determine if there are gaps or adjustments necessary. Students may consider variables such as socio-economic profiles of individuals/households or other equity seeking groups which may rely disproportionately on transit for their mobility (lower-income households, new/recent immigrants, service sector employment, affordable housing).
 "
 
-##Process:
+## Process:
 
 For the project, we assessed through the typical economic method: Demand of the Calgarians and the current and future Supply of Calgary's Primary Transit Network (consisting of Max buses and transit line).
 
@@ -22,7 +24,7 @@ Service Capacity: It measures the total number of people a transit can fit per t
 
 Once we have both sides, transit gap will be assessed by the difference of Demand and Supply. The results for all will be visualized using ArcGIS and displayed in Python library 'Streamlit'.
 
-##Procedure:
+## Procedure:
 
 Demand:
 - Web scraping Community Profiles from "https://www.calgary.ca/communities/profiles.html" using Python.
@@ -57,3 +59,7 @@ Gap:
 - Optional:
     - Display top 5 and bottom 5 of the communities on the list.
     - Letter Grades for easier interpretation
+ 
+Display:
+- ArcGIS was used to visualize via map to allow easier understanding of our findings.
+- We implemented streamlit library to develop an interactive web app and host our findings in (including the map data from ArcGIS), letting the user the option to manipulate the parameters to see how the results change.
