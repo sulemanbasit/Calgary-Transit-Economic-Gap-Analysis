@@ -35,6 +35,10 @@ Demand:
 - Optional:
     - Display top 5 and bottom 5 of the communities on the list.
     - Letter Grades for easier interpretation
+ - Map:
+    - Index:
+        - ![Picture1](https://github.com/user-attachments/assets/1931bde9-35aa-45ff-9e32-cfd60c71d436)
+
 
 Supply:
 - Get GTFS data file for Calgary Transit (as updated it can be)
@@ -52,6 +56,12 @@ Supply:
 - Optional:
     - Display top 5 and bottom 5 of the communities on the list.
     - Letter Grades for easier interpretation
+- Map:
+    - Current vs Future:
+        - ![supply](https://github.com/user-attachments/assets/31919ae1-7c64-47a1-9639-9fa27f80b72c)
+
+
+ 
 
 Gap:
 - Merge Demand index and Supply index data matching with community names and calculating the gap.
@@ -59,6 +69,10 @@ Gap:
 - Optional:
     - Display top 5 and bottom 5 of the communities on the list.
     - Letter Grades for easier interpretation
+- Map:
+    - Current vs Future:
+        - ![gap](https://github.com/user-attachments/assets/a61ccdac-32bd-4839-b0cf-b56b1726887f)
+
  
 Display:
 - ArcGIS was used to visualize via map to allow easier understanding of our findings.
