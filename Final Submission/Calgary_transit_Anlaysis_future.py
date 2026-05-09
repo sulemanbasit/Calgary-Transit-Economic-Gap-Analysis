@@ -3,11 +3,7 @@ import pandas as pd
 import json
 import plotly.express as px
 from fractions import Fraction
-import numpy as np
-import matplotlib.pyplot as mpt
-import os
 import geopandas as gpd
-from glob import glob
 from gtfs_functions import Feed
 
 
@@ -25,18 +21,6 @@ orange_code = '303-20727'
 yellow_code = '304-20727'
 teal_code = '306-20727'
 purple_code = '307-20727'
-comm_list = []
-red_list = []
-blue_list = []
-orange_list = []
-yellow_list = []
-purple_list = []
-teal_list = []
-green_list = []
-future_brentwood_list = []
-future_tuscany_list = []
-east_grey_list = []
-west_grey_list = []
 
 
 #def assign_grade(score):
@@ -93,6 +77,19 @@ def main():
     t = st.text_input("Input time range and separate by comma (eg. 6am-9am: 6,7,8,9):")
     if st.button("Calculate Indices"):
         try:
+            comm_list = []
+            red_list = []
+            blue_list = []
+            orange_list = []
+            yellow_list = []
+            purple_list = []
+            teal_list = []
+            green_list = []
+            future_brentwood_list = []
+            future_tuscany_list = []
+            east_grey_list = []
+            west_grey_list = []
+
             # Validate and convert weights
             weights = validate_weights([
                 get_valid_weight(low_income_weight),
@@ -280,7 +277,7 @@ def main():
 
             # Calculate Index
             fut_service_df["Frequency Index"] = fut_service_df.filter(like="Freq").sum(axis=1)
-            fut_service_df['Total Trips'] = fut_service_df.filter(regex="Red Trips|Blue Trips|Green Trips").sum(axis=1)*train_capacity + fut_service_df.filter(regex="Orange Trips|Yellow Trips|Teal Trips|Yellow Trips|Purple Trips|East Grey Trips|West Grey Trips|Future Brentwood Trips| Future Tuscany Trips").sum(axis=1)*bus_capacity
+            fut_service_df['Total Trips'] = fut_service_df.filter(regex="Red Trips|Blue Trips|Green Trips").sum(axis=1)*train_capacity + fut_service_df.filter(regex="Orange Trips|Yellow Trips|Teal Trips|Purple Trips|East Grey Trips|West Grey Trips|Future Brentwood Trips|Future Tuscany Trips").sum(axis=1)*bus_capacity
             fut_service_df["Capacity Index"] = fut_service_df['Total Trips']/fut_service_df.filter(like='Population').sum(axis=1)
 
             min_freq = min(fut_service_df['Frequency Index'])

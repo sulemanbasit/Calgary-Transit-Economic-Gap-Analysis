@@ -3,11 +3,7 @@ import pandas as pd
 import json
 import plotly.express as px
 from fractions import Fraction
-import numpy as np
-import matplotlib.pyplot as mpt
-import os
 import geopandas as gpd
-from glob import glob
 from gtfs_functions import Feed
 
 
@@ -25,13 +21,6 @@ orange_code = '303-20727'
 yellow_code = '304-20727'
 teal_code = '306-20727'
 purple_code = '307-20727'
-comm_list = []
-red_list = []
-blue_list = []
-orange_list = []
-yellow_list = []
-purple_list = []
-teal_list = []
 
 
 #def assign_grade(score):
@@ -88,6 +77,14 @@ def main():
     t = st.text_input("Input time range and separate by comma (eg. 6am-9am: 6,7,8,9):")
     if st.button("Calculate Indices"):
         try:
+            comm_list = []
+            red_list = []
+            blue_list = []
+            orange_list = []
+            yellow_list = []
+            purple_list = []
+            teal_list = []
+
             # Validate and convert weights
             weights = validate_weights([
                 get_valid_weight(low_income_weight),
@@ -119,7 +116,6 @@ def main():
             st.write("Calculated Indices", df[['Community Name', 'Low Income Index', 'Seniors Index', 'Rent Index', 'Public Transit Index']])
             
             # Sort data by Standardized Total Community Index and select top 5 and bottom 5
-            df_sorted = pd.read_csv('TotalDemandIndexStandardizedMethod2.csv')
             df_sorted = df.sort_values(by='Standardized Total Community Index', ascending=False)
             top_5 = df_sorted.head(5)
             bottom_5 = df_sorted.tail(5)
@@ -198,15 +194,15 @@ def main():
                         red_list.extend([com for com in row['Community'].split(',')])
                     else:
                         blue_list.extend([com for com in row['Community'].split(',')])
-            else:
-                if 'Orange' in row['Line']:
-                    orange_list.extend([com for com in row['Community'].split(',')])
-                elif 'Purple' in row['Line']:
-                    purple_list.extend([com for com in row['Community'].split(',')])
-                elif 'Teal' in row['Line']:
-                    teal_list.extend([com for com in row['Community'].split(',')])
                 else:
-                    yellow_list.extend([com for com in row['Community'].split(',')])
+                    if 'Orange' in row['Line']:
+                        orange_list.extend([com for com in row['Community'].split(',')])
+                    elif 'Purple' in row['Line']:
+                        purple_list.extend([com for com in row['Community'].split(',')])
+                    elif 'Teal' in row['Line']:
+                        teal_list.extend([com for com in row['Community'].split(',')])
+                    else:
+                        yellow_list.extend([com for com in row['Community'].split(',')])
             
             comm_list = list(set(red_list+blue_list+orange_list+purple_list+teal_list+yellow_list))
             clean_com_list = [item for item in comm_list if item.strip()]
@@ -290,9 +286,6 @@ def main():
             current_dns.to_file('final_data_set', driver='GeoJSON')
             with open('final_data_set.geojson', 'r') as file:
                     geojson_data = json.load(file)
-            
-            st.write('reach this point')
-#-------------
             fig2 = px.choropleth(
             geojson=geojson_data,
             featureidkey="properties.NAME",
