@@ -1,0 +1,7 @@
+streamlit
+pandas<3
+plotly
+geopandas
+openpyxl
+gtfs_functions==2.5
+h3<4

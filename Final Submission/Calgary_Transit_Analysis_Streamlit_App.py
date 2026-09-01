@@ -281,9 +281,9 @@ def main():
 
             comm_geo = gpd.read_file(census_file)
             dns_bound_data = pd.merge(final_current_df, comm_geo, how='left', left_on='NAME', right_on='name')
-            current_dns = gpd.GeoDataFrame(dns_bound_data[['name',"Low Income Index","Seniors Index","Rent Index","Total Community Index", "SS Frequency Index", "SS Capacity Index",'SS Coverage Index',"Community Demand Index","Average Supply Index",'Transit Gap','Letter Grade','geometry']])
-            
-            current_dns.to_file('final_data_set', driver='GeoJSON')
+            current_dns = gpd.GeoDataFrame(dns_bound_data[['NAME',"Low Income Index","Seniors Index","Rent Index","Total Community Index", "SS Frequency Index", "SS Capacity Index",'SS Coverage Index',"Community Demand Index","Average Supply Index",'Transit Gap','Letter Grade','geometry']])
+
+            current_dns.to_file('final_data_set.geojson', driver='GeoJSON')
             with open('final_data_set.geojson', 'r') as file:
                     geojson_data = json.load(file)
             fig2 = px.choropleth(

@@ -1,6 +1,11 @@
 Instructions to run the program:
 
-1: Make sure the streamlit package is installed on your PC
-    - To install: pip install streamlit
+1: Install the required packages (streamlit alone is not enough - the app
+   also needs pandas, plotly, geopandas, and gtfs_functions):
+    - To install: pip install -r requirements.txt
+    - Note: gtfs_functions must be pinned to 2.5 (the latest release on
+      PyPI, 2.7.0, ships an empty package with no code) and h3 must stay
+      below version 4 (gtfs_functions relies on the old h3 v3 API). These
+      pins are already set in requirements.txt.
 2: Make sure your terminal is in the same directory as the program
 3: Run the following code: streamlit run *program_to_run*
